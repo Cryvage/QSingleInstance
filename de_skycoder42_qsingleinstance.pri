@@ -1,5 +1,7 @@
 QT *= network
 
+CONFIG += c++11
+
 HEADERS += \
 	$$PWD/QSingleInstance/qsingleinstance.h \
 	$$PWD/QSingleInstance/clientinstance.h \

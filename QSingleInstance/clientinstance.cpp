@@ -11,7 +11,7 @@ ClientInstance::ClientInstance(QLocalSocket *socket, QSingleInstancePrivate *par
 	argData()
 {
 	connect(socket, &QLocalSocket::readyRead, this, &ClientInstance::newData);
-	connect(socket, QOverload<QLocalSocket::LocalSocketError>::of(&QLocalSocket::error),
+    connect(socket, static_cast<void (QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error),
 			this, &ClientInstance::socketError);
 	connect(socket, &QLocalSocket::disconnected, this, &ClientInstance::deleteLater);
 }
